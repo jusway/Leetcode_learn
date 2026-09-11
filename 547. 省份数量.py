@@ -93,6 +93,52 @@ class Solution:
         return uf.count
 
 
+# 并查集（完全体）
+class UnionFind:
+    def __init__(self,n):
+        self.parent=list(range(n)) # [0,1,2,3,4,5,6]
+        self.count=n
+
+
+    def find(self,x):
+        # 返回值是x的根
+        if self.parent[x]==x:
+            return x
+
+        root=self.find(self.parent[x])
+        # 顺手改变节点指向
+        self.parent[x]=root
+        return root
+
+    def union(self,x,y):
+        root_x=self.find(x)
+        root_y=self.find(y)
+        if root_x==root_y: # 是不是同一类别？
+            return
+        self.parent[root_x]=root_y
+        self.count-=1
+
+
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n=len(isConnected)
+        uf=UnionFind(n)
+        for i in range(n):
+            for j in range(i+1,n):
+                if isConnected[i][j]==1:
+                    uf.union(i,j)
+
+        return uf.count
+
+
+
+
+
+
+
+
+
+
 
 
 

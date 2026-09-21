@@ -51,7 +51,7 @@ class Solution:
 # 计算方法个数，找到了递推公式，分解为子问题
 class Solution:
     def climbStairs(self, n: int) -> int:
-        def f(x): # 从开始走到 x 台阶的方法个数
+        def f(x): # 0~x 台阶的方法个数
             if x==0:
                 return 1
             if x==1:

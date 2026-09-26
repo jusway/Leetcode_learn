@@ -66,7 +66,7 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         memory={}
 
-        def f(x): # 从开始走到 x 台阶的方法个数
+        def f(x): # 从0走到 x 台阶的方法个数
             if x==0:
                 return 1
             if x==1:
